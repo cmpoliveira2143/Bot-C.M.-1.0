@@ -1,10 +1,11 @@
 <xml xmlns="https://developers.google.com/blockly/xml" is_dbot="true" collection="false">
   <variables>
-    <variable id="(6X]Q7d$G3HLqyJ_Sx-d">Delay</variable>
+    <variable id="5iTv-q;wm99fKiA]L6h-">Tempo Vela</variable>
     <variable id="(oRTY^b=fdPvv;[20?ms">Stake Inicial</variable>
     <variable id=";e}Y@(jmqI,,aNX;RLVN">Stake Atual</variable>
-    <variable id="b}I*7BvAWzySCGFQ#JS1">Contador Loss</variable>
     <variable id="UVAE;xh~%3;lJ}L7O?6]">Contador Soros</variable>
+    <variable id="b}I*7BvAWzySCGFQ#JS1">Contador Loss</variable>
+    <variable id="@c4u8jeCMU#?=ysNXVN%">Alvo Lucro</variable>
     <variable id="Q1;F{a%i|5KfN.op6V_3">EMA_20</variable>
     <variable id="_}t(rytvYD)a2254u5Q,">SMA_50</variable>
     <variable id="4`6s9OrJE|JYC34$M0.g">RSI_Atual</variable>
@@ -14,7 +15,7 @@
       <block type="trade_definition_market" id="6s]:HuTW!r4CKW|R)Ntu" deletable="false" movable="false">
         <field name="MARKET_LIST">synthetic_index</field>
         <field name="SUBMARKET_LIST">random_index</field>
-        <field name="SYMBOL_LIST">R_50</field>
+        <field name="SYMBOL_LIST">R_100</field>
         <next>
           <block type="trade_definition_tradetype" id="43$rAO!r~mf)3bIWPxCs" deletable="false" movable="false">
             <field name="TRADETYPECAT_LIST">callput</field>
@@ -24,7 +25,7 @@
                 <field name="TYPE_LIST">both</field>
                 <next>
                   <block type="trade_definition_candleinterval" id="ueJNzV2GQH0@R4*VFbvr" deletable="false" movable="false">
-                    <field name="CANDLEINTERVAL_LIST">300</field>
+                    <field name="CANDLEINTERVAL_LIST">60</field>
                     <next>
                       <block type="trade_definition_restartbuysell" id="j/m]*-:^AyS;:e;/NLkH" deletable="false" movable="false">
                         <field name="TIME_MACHINE_ENABLED">FALSE</field>
@@ -44,45 +45,55 @@
       </block>
     </statement>
     <statement name="INITIALIZATION">
-      <block type="variables_set" id=",e5=u75pLh8,mE:2xv:R">
-        <field name="VAR" id="(6X]Q7d$G3HLqyJ_Sx-d">Delay</field>
+      <block type="variables_set" id="EUY8uP*K$RfjZ_pfB@,z">
+        <field name="VAR" id="(oRTY^b=fdPvv;[20?ms">Stake Inicial</field>
         <value name="VALUE">
-          <block type="math_number" id="%(L39Z;mZ16d.?nc{su9">
-            <field name="NUM">5</field>
+          <block type="math_number" id="yV:WF=EcCm^F|kE~tBv9">
+            <field name="NUM">1</field>
           </block>
         </value>
         <next>
-          <block type="variables_set" id="EUY8uP*K$RfjZ_pfB@,z">
-            <field name="VAR" id="(oRTY^b=fdPvv;[20?ms">Stake Inicial</field>
+          <block type="variables_set" id="uH2m^/lPo?+s!~:N!;}E">
+            <field name="VAR" id=";e}Y@(jmqI,,aNX;RLVN">Stake Atual</field>
             <value name="VALUE">
-              <block type="math_number" id="yV:WF=EcCm^F|kE~tBv9">
-                <field name="NUM">0.35</field>
+              <block type="variables_get" id="TdLDb%d3mMu.*sNLJ|Gu">
+                <field name="VAR" id="(oRTY^b=fdPvv;[20?ms">Stake Inicial</field>
               </block>
             </value>
             <next>
-              <block type="variables_set" id="uH2m^/lPo?+s!~:N!;}E">
-                <field name="VAR" id=";e}Y@(jmqI,,aNX;RLVN">Stake Atual</field>
+              <block type="variables_set" id=",q-~Lkuzx`4c!{6u`%d2">
+                <field name="VAR" id="UVAE;xh~%3;lJ}L7O?6]">Contador Soros</field>
                 <value name="VALUE">
-                  <block type="variables_get" id="TdLDb%d3mMu.*sNLJ|Gu">
-                    <field name="VAR" id="(oRTY^b=fdPvv;[20?ms">Stake Inicial</field>
+                  <block type="math_number" id="w0*-~0?`KDbL[)]by2cy">
+                    <field name="NUM">0</field>
                   </block>
                 </value>
                 <next>
-                  <block type="variables_set" id=",q-~Lkuzx`4c!{6u`%d2">
-                    <field name="VAR" id="UVAE;xh~%3;lJ}L7O?6]">Contador Soros</field>
+                  <block type="variables_set" id="Wr__8,1+S(i[[cqw=~Wi">
+                    <field name="VAR" id="@c4u8jeCMU#?=ysNXVN%">Alvo Lucro</field>
                     <value name="VALUE">
-                      <block type="math_number" id="w0*-~0?`KDbL[)]by2cy">
-                        <field name="NUM">0</field>
+                      <block type="math_number" id=":tjZ%+UK=LOSxz$#tn]g">
+                        <field name="NUM">10</field>
                       </block>
                     </value>
                     <next>
-                      <block type="variables_set" id="2IDDgus#O+TTLV}fnVzP">
-                        <field name="VAR" id="b}I*7BvAWzySCGFQ#JS1">Contador Loss</field>
+                      <block type="variables_set" id="{7n@f1!wg]a4/N-kRiSu">
+                        <field name="VAR" id="@c4u8jeCMU#?=ysNXVN%">Alvo Lucro</field>
                         <value name="VALUE">
-                          <block type="math_number" id="Kkiw.0zCVFS-83BS7.@2">
-                            <field name="NUM">0</field>
+                          <block type="math_number" id="lsu8?oe3IxNRq?`:VqSU">
+                            <field name="NUM">5</field>
                           </block>
                         </value>
+                        <next>
+                          <block type="variables_set" id="2IDDgus#O+TTLV}fnVzP">
+                            <field name="VAR" id="b}I*7BvAWzySCGFQ#JS1">Contador Loss</field>
+                            <value name="VALUE">
+                              <block type="math_number" id="Kkiw.0zCVFS-83BS7.@2">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
                       </block>
                     </next>
                   </block>
@@ -101,9 +112,6 @@
           <shadow type="math_number_positive" id="l#|.5FdGWgz6NCR-oHMe">
             <field name="NUM">5</field>
           </shadow>
-          <block type="variables_get" id="_Tg3@BDCOEIl[}{OZkvi">
-            <field name="VAR" id="(6X]Q7d$G3HLqyJ_Sx-d">Delay</field>
-          </block>
         </value>
         <value name="AMOUNT">
           <shadow type="math_number_positive" id="Gvxyc9`3?w$#eBud`=FY">
@@ -116,7 +124,7 @@
       </block>
     </statement>
   </block>
-  <block type="during_purchase" id="u*A~#[r4}8dhU1B{^!;9" collapsed="true" x="807" y="60">
+  <block type="during_purchase" id="u*A~#[r4}8dhU1B{^!;9" x="3239" y="60">
     <statement name="DURING_PURCHASE_STACK">
       <block type="controls_if" id=".J)Lv3%JR@j!|X_1^t~X">
         <value name="IF0">
@@ -125,7 +133,7 @@
       </block>
     </statement>
   </block>
-  <block type="after_purchase" id="xCpA=)9^6@WR,QG,b:14" collapsed="true" x="807" y="156">
+  <block type="after_purchase" id="xCpA=)9^6@WR,QG,b:14" x="3239" y="292">
     <statement name="AFTERPURCHASE_STACK">
       <block type="controls_if" id="(4([F~`afs?8b*8*G;pv">
         <value name="IF0">
@@ -415,9 +423,9 @@
       </block>
     </statement>
   </block>
-  <block type="before_purchase" id="Y;o^Rl,}[a{=Mi7%QU#o" collapsed="true" deletable="false" x="0" y="880">
+  <block type="before_purchase" id="Y;o^Rl,}[a{=Mi7%QU#o" deletable="false" x="0" y="928">
     <statement name="BEFOREPURCHASE_STACK">
-      <block type="notify" id="vEwJrne:~/GTV0{q3TF#" disabled="true">
+      <block type="notify" id="vEwJrne:~/GTV0{q3TF#">
         <field name="NOTIFICATION_TYPE">error</field>
         <field name="NOTIFICATION_SOUND">silent</field>
         <value name="MESSAGE">
@@ -665,7 +673,7 @@
                         <value name="INPUT_LIST">
                           <block type="ohlc_values" id="?IL-=HFdzCM=zU8+=yG%">
                             <field name="OHLCFIELD_LIST">close</field>
-                            <field name="CANDLEINTERVAL_LIST">300</field>
+                            <field name="CANDLEINTERVAL_LIST">60</field>
                           </block>
                         </value>
                         <next>
@@ -687,7 +695,7 @@
                             <value name="INPUT_LIST">
                               <block type="ohlc_values" id="Cj@R3maEpk-~~ZjvNI$*">
                                 <field name="OHLCFIELD_LIST">close</field>
-                                <field name="CANDLEINTERVAL_LIST">300</field>
+                                <field name="CANDLEINTERVAL_LIST">60</field>
                               </block>
                             </value>
                             <next>
@@ -709,7 +717,7 @@
                                 <value name="INPUT_LIST">
                                   <block type="ohlc_values" id="YNQwx_);2,9YjykgOT8S">
                                     <field name="OHLCFIELD_LIST">close</field>
-                                    <field name="CANDLEINTERVAL_LIST">300</field>
+                                    <field name="CANDLEINTERVAL_LIST">60</field>
                                   </block>
                                 </value>
                                 <next>
@@ -823,5 +831,8 @@
         </next>
       </block>
     </statement>
+  </block>
+  <block type="variables_get" id="Jk3FThzE,ynYl6N8uNE]" disabled="true" x="0" y="2158">
+    <field name="VAR" id="5iTv-q;wm99fKiA]L6h-">Tempo Vela</field>
   </block>
 </xml>
